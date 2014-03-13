@@ -3,7 +3,6 @@ module Openseadragon
     attr_accessor :id, :width, :height
 
     class_attribute :file_resolver
-    #self.file_resolver = FileSystemFileResolver
    
     class << self
       def find(id)
