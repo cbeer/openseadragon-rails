@@ -10,7 +10,7 @@ module Openseadragon
     # @option options [Hash] :options_with_raw_js
     def openseadragon_collection_viewer(ids_or_images, options={})
       html_options = (options[:html] or {})
-      html_options[:id] = (options[:id] or :openseadragon1)
+      html_options[:id] = (options[:id] or 'openseadragon1')
 
       tile_sources = ids_or_images.zip((options[:tileSources] or [])).map do |id_or_image, opts|
         image_options(id_or_image, opts)
@@ -38,16 +38,35 @@ module Openseadragon
     # converts a ruby hash to a javascript object without stringifying the raw_js_keys
     # so you can put js variables in there
     def options_to_js(options, raw_js_keys=[])
-      normal = options.except(*raw_js_keys).map do |k, v|
+      normal = options.except(*raw_js_keys).stringify_keys.map do |k, v|
         val = if v.is_a?(Hash) or v.is_a?(Array)
                 JSON.pretty_generate(v)
               else
-                JSON.dump(v)
+                json_dump(v)
               end
-        JSON.dump(k) + ": " + val
+        k.to_s.inspect + ": " + val
       end
       raw_js = options.slice(*raw_js_keys).map{|k, v| k.to_s + ": " + v.to_s}
       "{\n" + (normal + raw_js).join(",\n") + "}"
+    end
+
+
+    # This hack is necessary for ruby 1.9.3. Just use JSON.dump(val) if Ruby >= 2.0
+    if RUBY_VERSION < "2.0.0"
+      def json_dump(val)
+        case val
+        when String
+          val.inspect
+        when Symbol
+          val.to_s.inspect
+        else
+          raise ArgumentError, "Unexpected value #{val.inspect}"
+        end
+      end
+    else
+      def json_dump(val)
+        JSON.dump(val)
+      end
     end
 
     # @param id_or_image [String,Image] the image identifier or an image object
