@@ -1,7 +1,7 @@
-require 'engine_cart/rake_task'
 require 'rspec/core/rake_task'
+require 'engine_cart/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
-task :ci => ['engine_cart:generate'] do
-end
+task ci: ['engine_cart:generate', :spec]
+task default: :ci

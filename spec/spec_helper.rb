@@ -1,9 +1,9 @@
 ENV["RAILS_ENV"] ||= 'test'
 
 
+require 'rails'
 require 'bundler'
 require 'engine_cart'
-require 'tmpdir'
 EngineCart.load_application!
 require 'rspec/rails'
 
