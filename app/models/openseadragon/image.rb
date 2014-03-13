@@ -15,9 +15,5 @@ module Openseadragon
       self.width = attributes[:width]
       self.height = attributes[:height]
     end
-
-    def as_json
-      { id: id}
-    end
   end
 end
