@@ -6,10 +6,10 @@ require 'openseadragon/version'
 Gem::Specification.new do |spec|
   spec.name          = "openseadragon"
   spec.version       = Openseadragon::VERSION
-  spec.authors       = ["TODO: Write your name"]
+  spec.authors       = ["Justin Coyne", "Brian Maddy"]
   spec.email         = ["justin@curationexperts.com"]
-  spec.summary       = %q{TODO: Write a short summary. Required.}
-  spec.description   = %q{TODO: Write a longer description. Optional.}
+  spec.summary       = %q{OpenSeadragon assets and helpers for Rails. http://openseadragon.github.io/}
+  spec.description   = %q{OpenSeadragon is a javascript library for displaying tiling images. This gem packages those assets and some Rails helpers for using them}
   spec.homepage      = ""
   spec.license       = "MIT"
 
@@ -20,4 +20,11 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.5"
   spec.add_development_dependency "rake"
+  spec.add_development_dependency "engine_cart"
+  spec.add_development_dependency "rspec-rails"
+  spec.add_development_dependency "sqlite3"
+
+  spec.add_dependency 'rails', '> 3.2.0'
+  
+
 end

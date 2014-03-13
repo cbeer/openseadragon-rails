@@ -1,5 +1,5 @@
 require "openseadragon/version"
+require "openseadragon/engine"
 
 module Openseadragon
-  # Your code goes here...
 end

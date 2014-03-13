@@ -1,29 +1,22 @@
-# Openseadragon
+# OpenSeadragon
 
-TODO: Write a gem description
+OpenSeadragon is a javascript library for displaying tiling images. This gem packages those assets and some Rails helpers for using them.
 
-## Installation
+http://openseadragon.github.io/
 
-Add this line to your application's Gemfile:
+# Setup
 
-    gem 'openseadragon'
+In order to display a file, OpenSeadragon needs to know the full dimension of the image.  In order to do this we need to inject an image resolver. Here's an example.
 
-And then execute:
+```ruby
+    module SpecResolver
+      def self.find(id)
+        # Custom code here to find the height & width
+        Openseadragon::Image.new(id: id, height: 4000, width: 8000)
+      end
+    end
 
-    $ bundle
+    # register the resolver
+    Openseadragon::Image.file_resolver = SpecResolver
+```
 
-Or install it yourself as:
-
-    $ gem install openseadragon
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/openseadragon/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
