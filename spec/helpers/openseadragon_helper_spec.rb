@@ -17,7 +17,7 @@ describe Openseadragon::OpenseadragonHelper do
 
   it "should draw the single item viewer" do
     out = openseadragon_viewer('world', image_host: '/foo', html: {class: 'stuff'})
-    out.should == '<div class="stuff" id="openseadragon1" /><script>
+    out.should == '<div class="stuff" id="openseadragon1"></div><script>
 //<![CDATA[
         function initOpenSeadragon() {
           OpenSeadragon({
@@ -82,7 +82,7 @@ describe Openseadragon::OpenseadragonHelper do
                                            extraOption: :some_stuff,
                                            rawOption: "(1 + 1)",
                                            options_with_raw_js: [:rawOption]})
-    out.should == '<div id="openseadragon1" /><script>
+    out.should == '<div id="openseadragon1"></div><script>
 //<![CDATA[
         function initOpenSeadragon() {
           OpenSeadragon({

@@ -32,7 +32,7 @@ module Openseadragon
         window.onload = initOpenSeadragon;
         document.addEventListener("page:load", initOpenSeadragon); // Initialize when using turbolinks
       EOF
-      tag(:div, html_options) + javascript_tag(js) 
+      content_tag(:div, '', html_options) + javascript_tag(js)
     end
 
     # converts a ruby hash to a javascript object without stringifying the raw_js_keys
