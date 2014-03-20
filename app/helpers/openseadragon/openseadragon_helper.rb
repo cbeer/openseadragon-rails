@@ -93,22 +93,12 @@ module Openseadragon
       options ||= {}
       image = case id_or_image
         when String
-          Image.find(id_or_image)
+          image_options(Image.find(id_or_image), options)
         when Image
-          id_or_image
+          id_or_image.to_tilesource.merge(options)
+        when Info
+          id_or_image.to_tilesource
         end
-      {
-        identifier: image.id,
-        width: image.width,
-        height: image.height,
-        scale_factors: [1, 2, 3, 4, 5],
-        formats: [:jpg, :png],
-        qualities: [:native, :bitonal, :grey, :color],
-        profile: "http://library.stanford.edu/iiif/image-api/compliance.html#level3",
-        tile_width: 1024,
-        tile_height: 1024,
-        image_host: '/image-service',
-      }.merge(options)
     end
   end
 end
