@@ -59,6 +59,15 @@ describe Openseadragon::OpenseadragonHelper do
 </script>'
   end
 
+  it "should draw the single item viewer for an info.json source" do
+    out = openseadragon_viewer(Openseadragon::Info.new(id: 'uri:to/info.json'))
+    expect(out).to match '' +'
+"tileSources": \[
+  "uri:to/info.json"
+\]\}\);'
+
+  end
+
   it "should not crash when there's no tileSources" do
     openseadragon_collection_viewer(['world', 'irises'], {extraOption: :some_stuff})
     openseadragon_collection_viewer(['world', 'irises'],
