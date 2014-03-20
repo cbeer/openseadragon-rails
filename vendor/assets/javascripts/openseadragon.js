@@ -1,6 +1,6 @@
 //! OpenSeadragon 1.0.0
 //! Built on 2014-03-20
-//! Git commit: v1.0.0-74-g1643660
+//! Git commit: v1.0.0-75-g3d02871-dirty
 //! http://openseadragon.github.io
 //! License: http://openseadragon.github.io/license/
 
@@ -409,6 +409,10 @@
   *
   * @property {Number} [collectionTileSize=800]
   *
+  * @property {String} [crossOriginPolicy='Anonymous']
+  *      Valid values are 'Anonymous', 'use-credentials', and false. If false, canvas requests will
+  *      not use CORS, and the canvas will be tainted.
+  *
   */
 
 /**
@@ -723,6 +727,7 @@ window.OpenSeadragon = window.OpenSeadragon || function( options ){
             tileSources:            null,
             tileHost:               null,
             initialPage:            0,
+            crossOriginPolicy:      'Anonymous',
             
             //PAN AND ZOOM SETTINGS AND CONSTRAINTS
             panHorizontal:          true,
@@ -6138,7 +6143,8 @@ function openTileSource( viewer, source ) {
         minPixelRatio:      _this.collectionMode ? 0 : _this.minPixelRatio,
         timeout:            _this.timeout,
         debugMode:          _this.debugMode,
-        debugGridColor:     _this.debugGridColor
+        debugGridColor:     _this.debugGridColor,
+        crossOriginPolicy:  _this.crossOriginPolicy
     });
 
     // Now that we have a drawer, see if it supports rotate. If not we need to remove the rotate buttons
@@ -12237,7 +12243,8 @@ $.Drawer = function( options ) {
         alwaysBlend:        $.DEFAULT_SETTINGS.alwaysBlend,
         minPixelRatio:      $.DEFAULT_SETTINGS.minPixelRatio,
         debugMode:          $.DEFAULT_SETTINGS.debugMode,
-        timeout:            $.DEFAULT_SETTINGS.timeout
+        timeout:            $.DEFAULT_SETTINGS.timeout,
+        crossOriginPolicy:  $.DEFAULT_SETTINGS.crossOriginPolicy
 
     }, options );
 
@@ -12440,7 +12447,10 @@ $.Drawer.prototype = /** @lends OpenSeadragon.Drawer.prototype */{
             this.downloading++;
 
             image = new Image();
-            image.crossOrigin = 'Anonymous';
+
+            if (_this.crossOriginPolicy !== false) {
+              image.crossOrigin = _this.crossOriginPolicy;
+            }
 
             complete = function( imagesrc, resultingImage ){
                 _this.downloading--;
