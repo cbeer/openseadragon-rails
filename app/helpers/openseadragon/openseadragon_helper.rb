@@ -55,7 +55,7 @@ module Openseadragon
     if RUBY_VERSION < "2.0.0"
       def json_dump(val)
         case val
-        when String
+        when String, Integer, true, false
           val.inspect
         when Symbol
           val.to_s.inspect
