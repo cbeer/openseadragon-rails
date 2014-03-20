@@ -1,4 +1,4 @@
-# OpenSeadragon
+# OpenSeadragon [![Gem Version](https://badge.fury.io/rb/openseadragon.png)](http://badge.fury.io/rb/openseadragon)
 
 OpenSeadragon is a javascript library for displaying tiling images. This gem packages those assets and some Rails helpers for using them.
 
