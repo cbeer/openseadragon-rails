@@ -1,13 +1,12 @@
 module Openseadragon
-  class Info
-    attr_accessor :id
-
+  class OpenStreetMap
     def initialize(attributes = {})
-      self.id = attributes[:id]
     end
     
     def to_tilesource
-      id
+      {
+        type: 'openstreetmaps'
+      }
     end
   end
 end
