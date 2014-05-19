@@ -8,6 +8,11 @@ http://openseadragon.github.io/
 
 This gem provides two helpers, `#picture_tag` and `#openseadragon_picture_tag`.
 
+In your controller add this line:
+```ruby
+  helper Openseadragon::OpenseadragonHelper
+```
+
 ## picture_tag
 
 The `#picture_tag` helper creates [HTML5 <picture> tags](http://www.w3.org/TR/html-picture-element/).
