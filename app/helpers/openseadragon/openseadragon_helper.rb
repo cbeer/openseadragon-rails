@@ -51,7 +51,7 @@ module Openseadragon
       tile_sources = sources.map { |thing| extract_openseadragon_picture_tilesource(thing) }
       
       picture_options[:data] ||= {}
-      picture_options[:data][:openseadragon] ||= true
+      picture_options[:data][:openseadragon] = osd_asset_defaults.merge(picture_options[:data][:openseadragon] || {}).to_json
 
       picture_tag [tile_sources], { media: 'openseadragon' }.merge(source_options), picture_options
     end
@@ -97,7 +97,7 @@ module Openseadragon
         html_options.merge! src_options.fetch(:html, {})
         html_options[:data] ||= {}
         
-        osd_options = osd_asset_defaults.merge(html_options[:data][:openseadragon] || {})
+        osd_options = html_options[:data][:openseadragon] || {}
         osd_options.merge!(src_options.except(:html))
 
         if src.respond_to? :to_tilesource
@@ -114,7 +114,7 @@ module Openseadragon
         html_options[:data][:openseadragon] = osd_options.to_json
         
         [ html_options.fetch(:src, src) => html_options ]
-      else
+      else # string
         thing
       end
     end
