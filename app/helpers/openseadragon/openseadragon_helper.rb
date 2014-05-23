@@ -97,7 +97,7 @@ module Openseadragon
         html_options.merge! src_options.fetch(:html, {})
         html_options[:data] ||= {}
         
-        osd_options = html_options[:data][:openseadragon] || {}
+        osd_options = osd_asset_defaults.merge(html_options[:data][:openseadragon] || {})
         osd_options.merge!(src_options.except(:html))
 
         if src.respond_to? :to_tilesource
@@ -118,5 +118,62 @@ module Openseadragon
         thing
       end
     end
+
+    def osd_asset_defaults
+      {
+        prefixUrl: '',
+        navImages: {
+          zoomIn: {
+            REST:     image_path('openseadragon/zoomin_rest.png'),
+            GROUP:    image_path('openseadragon/zoomin_grouphover.png'),
+            HOVER:    image_path('openseadragon/zoomin_hover.png'),
+            DOWN:     image_path('openseadragon/zoomin_pressed.png')
+          },
+          zoomOut: {
+              REST:   image_path('openseadragon/zoomout_rest.png'),
+              GROUP:  image_path('openseadragon/zoomout_grouphover.png'),
+              HOVER:  image_path('openseadragon/zoomout_hover.png'),
+              DOWN:   image_path('openseadragon/zoomout_pressed.png')
+          },
+          home: {
+              REST:   image_path('openseadragon/home_rest.png'),
+              GROUP:  image_path('openseadragon/home_grouphover.png'),
+              HOVER:  image_path('openseadragon/home_hover.png'),
+              DOWN:   image_path('openseadragon/home_pressed.png')
+          },
+          fullpage: {
+              REST:   image_path('openseadragon/fullpage_rest.png'),
+              GROUP:  image_path('openseadragon/fullpage_grouphover.png'),
+              HOVER:  image_path('openseadragon/fullpage_hover.png'),
+              DOWN:   image_path('openseadragon/fullpage_pressed.png')
+          },
+          rotateleft: {
+              REST:   image_path('openseadragon/rotateleft_rest.png'),
+              GROUP:  image_path('openseadragon/rotateleft_grouphover.png'),
+              HOVER:  image_path('openseadragon/rotateleft_hover.png'),
+              DOWN:   image_path('openseadragon/rotateleft_pressed.png')
+          },
+          rotateright: {
+              REST:   image_path('openseadragon/rotateright_rest.png'),
+              GROUP:  image_path('openseadragon/rotateright_grouphover.png'),
+              HOVER:  image_path('openseadragon/rotateright_hover.png'),
+              DOWN:   image_path('openseadragon/rotateright_pressed.png')
+          },
+          previous: {
+              REST:   image_path('openseadragon/previous_rest.png'),
+              GROUP:  image_path('openseadragon/previous_grouphover.png'),
+              HOVER:  image_path('openseadragon/previous_hover.png'),
+              DOWN:   image_path('openseadragon/previous_pressed.png')
+          },
+          next: {
+              REST:   image_path('openseadragon/next_rest.png'),
+              GROUP:  image_path('openseadragon/next_grouphover.png'),
+              HOVER:  image_path('openseadragon/next_hover.png'),
+              DOWN:   image_path('openseadragon/next_pressed.png')
+          }
+        }      
+      }.with_indifferent_access
+    end
+
   end
 end
