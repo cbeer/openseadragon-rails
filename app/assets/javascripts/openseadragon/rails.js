@@ -31,9 +31,9 @@
       $picture.css("display", "block");
       $picture.css("height", "500px");
 
-      OpenSeadragon(
+      $picture.data('osdViewer', OpenSeadragon(
         $.extend({ id: $picture.attr('id') }, collectionOptions, { tileSources: tilesources })
-      );
+      ));
     });
   };
 
