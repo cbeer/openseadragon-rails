@@ -38,5 +38,5 @@
   };
 
   window.onload = initOpenSeadragon;
-  document.addEventListener("page:load", initOpenSeadragon);
+  document.addEventListener("page:load", initOpenSeadragon, false);
 })(jQuery);
