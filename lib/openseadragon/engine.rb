@@ -2,7 +2,9 @@ module Openseadragon
   class Engine < ::Rails::Engine
     isolate_namespace Openseadragon
 
-    config.assets.precompile += %w(openseadragon/*.png)
+    if (Rails::VERSION::MAJOR > 3)
+      config.assets.precompile += %w(openseadragon/*.png)
+    end
 
   end
 end
