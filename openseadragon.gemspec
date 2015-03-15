@@ -6,8 +6,8 @@ require 'openseadragon/version'
 Gem::Specification.new do |spec|
   spec.name          = "openseadragon"
   spec.version       = Openseadragon::VERSION
-  spec.authors       = ["Justin Coyne", "Brian Maddy"]
-  spec.email         = ["justin@curationexperts.com"]
+  spec.authors       = ["Justin Coyne", "Chris Beer", "Christopher Jesudurai"]
+  spec.email         = ["justin@curationexperts.com", "cabeer@stanford.edu", "jchris@stanford.edu"],
   spec.summary       = %q{OpenSeadragon assets and helpers for Rails. http://openseadragon.github.io/}
   spec.description   = %q{OpenSeadragon is a javascript library for displaying tiling images. This gem packages those assets and some Rails helpers for using them}
   spec.homepage      = "https://github.com/iiif/openseadragon-rails"
