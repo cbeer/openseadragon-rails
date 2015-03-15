@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
   spec.summary       = %q{OpenSeadragon assets and helpers for Rails. http://openseadragon.github.io/}
   spec.description   = %q{OpenSeadragon is a javascript library for displaying tiling images. This gem packages those assets and some Rails helpers for using them}
   spec.homepage      = "https://github.com/iiif/openseadragon-rails"
-  spec.license       = "MIT"
+  spec.license       = "Apache 2.0"
 
   spec.files         = `git ls-files -z`.split("\x0")
   spec.executables   = spec.files.grep(%r{^bin/}) { |f| File.basename(f) }
