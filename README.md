@@ -4,16 +4,34 @@ OpenSeadragon is a javascript library for displaying tiling images. This gem pac
 
 http://openseadragon.github.io/
 
-# Usage
+## Installation
+
+Add the gem to your Gemfile:
+
+```ruby
+gem 'openseadragon-rails'
+```
+
+Run bundle install: 
+
+```
+$ bundle install
+```
+
+And run the openseadragon-rails install generator:
+
+```
+$ bundle exec rails g openseadragon:install
+```
+
+The generator will install the Rails helpers and openseadragon assets.
+
+## Usage
 
 This gem provides two helpers, `#picture_tag` and `#openseadragon_picture_tag`.
 
-In your controller add this line:
-```ruby
-  helper Openseadragon::OpenseadragonHelper
-```
 
-## picture_tag
+### picture_tag
 
 The `#picture_tag` helper creates [HTML5 <picture> tags](http://www.w3.org/TR/html-picture-element/).
 
@@ -47,7 +65,7 @@ picture_tag ['page1.jpg' => { id: 'first-picture'}], 'page2.jpg', 'page3.jpg', {
 </picture>
 ```
 
-## openseadragon_picture_tag
+### openseadragon_picture_tag
 
 If you have an OpenSeaDragon tilesource, you can use this helper to construct a HTML5 `<picture>` that will render as an OpenSeaDragon tile viewer.
 
