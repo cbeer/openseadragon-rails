@@ -9,7 +9,7 @@ http://openseadragon.github.io/
 Add the gem to your Gemfile:
 
 ```ruby
-gem 'openseadragon-rails'
+gem 'openseadragon'
 ```
 
 Run bundle install: 
