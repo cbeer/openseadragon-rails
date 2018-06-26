@@ -94,7 +94,7 @@ describe Openseadragon::OpenseadragonHelper do
         it "should merge a tilesource key with the options provided" do
           expect(subject).to have_selector 'picture source[src="openseadragon-tilesource"]'
           expect(subject).to have_selector 'picture source[src="openseadragon-tilesource"][id="xyz"]'
-          expect(subject).to match /data-openseadragon="#{helper.escape_once({b: 2, c: 3, a: 1}.to_json)}"/
+          expect(subject).to match /data-openseadragon="#{helper.escape_once({a: 1, b: 2, c: 3}.to_json)}"/
         end
       end
     end
