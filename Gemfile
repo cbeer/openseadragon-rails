@@ -22,6 +22,8 @@ else
     if ENV['RAILS_VERSION'] == 'edge'
       gem 'rails', github: 'rails/rails'
       ENV['ENGINE_CART_RAILS_OPTIONS'] = '--edge --skip-turbolinks'
+    elsif ENV['RAILS_VERSION'] < '6'
+      gem 'sprockets', '< 4'
     else
       gem 'rails', ENV['RAILS_VERSION']
     end
