@@ -21,19 +21,12 @@ else
   if ENV['RAILS_VERSION']
     if ENV['RAILS_VERSION'] == 'edge'
       gem 'rails', github: 'rails/rails'
-      ENV['ENGINE_CART_RAILS_OPTIONS']= "--edge --skip-turbolinks"
+      ENV['ENGINE_CART_RAILS_OPTIONS'] = '--edge --skip-turbolinks'
+    elsif ENV['RAILS_VERSION'] < '6'
+      gem 'sprockets', '< 4'
     else
       gem 'rails', ENV['RAILS_VERSION']
     end
-  end
-
-  if ENV['RAILS_VERSION'].nil? || ENV['RAILS_VERSION'] =~ /^4.2/
-    gem 'responders', "~> 2.0"
-    gem 'sass-rails', ">= 5.0"
-  elsif ENV['RAILS_VERSION'] =~ /^5.0/ || ENV['RAILS_VERSION'] == 'edge'
-    # nop
-  else
-    gem 'sass-rails', "< 5.0"
   end
 end
 # END ENGINE_CART BLOCK
