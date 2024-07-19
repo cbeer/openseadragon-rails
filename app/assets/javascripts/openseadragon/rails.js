@@ -5,7 +5,8 @@
     $('picture[data-openseadragon]').openseadragon();
   }
 
-  var handler = 'ready';
+  const jquery3 = parseInt($.fn.jquery.split('.')[0]) >= 3;
+  let handler = 'ready';
   if (typeof Turbolinks !== 'undefined' && Turbolinks.supported) {
     // Turbolinks 5
     if (Turbolinks.BrowserAdapter) {
@@ -15,5 +16,14 @@
       handler = 'page:load ready';
     }
   }
-  $(document).on(handler, initOpenSeadragon);
+
+  // Support for $(document).on( "ready", handler ) was removed in jQuery 3
+  if (jquery3 && handler.includes('ready')) {
+    handler = handler.replace('ready', '').trim();
+    $(initOpenSeadragon);
+  }
+
+  if (handler) {
+    $(document).on(handler, initOpenSeadragon);
+  }
 })(jQuery);
